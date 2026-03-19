@@ -19,6 +19,9 @@ jobs:
 
       - name: Lint Helm Chart
         run: helm lint ./boutique-chart
+        
+      - name: Template Test (No Cluster Needed)
+        run: helm template boutique-test ./boutique-chart
 
-      - name: Dry Run Helm Install
-        run: helm install boutique-test ./boutique-chart --dry-run --debug
+      #- name: Dry Run Helm Install
+       # run: helm install boutique-test ./boutique-chart --dry-run --debug
