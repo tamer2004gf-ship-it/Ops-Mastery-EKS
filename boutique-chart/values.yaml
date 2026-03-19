@@ -1,0 +1,4 @@
+image:
+  repository: gcr.io/google-samples/microservices-demo
+  tag: v0.8.0
+  namespace: default
