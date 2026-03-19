@@ -1,0 +1,24 @@
+name: Helm Lint and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  helm-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.12.0
+
+      - name: Lint Helm Chart
+        run: helm lint ./boutique-chart
+
+      - name: Dry Run Helm Install
+        run: helm install boutique-test ./boutique-chart --dry-run --debug
