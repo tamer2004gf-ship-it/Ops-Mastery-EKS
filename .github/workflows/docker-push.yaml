@@ -25,6 +25,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           # نستخدم المتغير ${{ matrix.service }} ليعرف المسار والاسم تلقائياً
+          submodules: recursive
           context: ./microservices-demo/src/${{ matrix.service }}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/boutique-${{ matrix.service }}:latest
