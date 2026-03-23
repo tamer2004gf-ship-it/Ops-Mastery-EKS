@@ -115,7 +115,8 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: true
-        image: {{ .Values.image.repository }}/cartservice:{{ .Values.image.tag }}
+        # تم التعديل هنا لاستخدام صورة راديس الرسمية
+        image: redis:alpine
         ports:
         - containerPort: 6379
         readinessProbe:
