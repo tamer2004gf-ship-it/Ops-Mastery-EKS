@@ -292,6 +292,10 @@ spec:
             grpc:
               port: 5050
           env:
+          - name: COLLECTOR_OTLP_ENDPOINT
+            value: "tempo.monitoring.svc.cluster.local:4317"
+          - name: OTEL_SERVICE_NAME
+            value: "checkoutservice"
           - name: PORT
             value: "5050"
           - name: PRODUCT_CATALOG_SERVICE_ADDR
