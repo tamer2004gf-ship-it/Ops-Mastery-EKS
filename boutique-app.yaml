@@ -6,9 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/GoogleCloudPlatform/microservices-demo.git
+    # 1. غير هاد الرابط لرابط المستودع تبعك إنت على GitHub (Ops-Mastery-EKS)
+    repoURL: https://github.com/tamer2004gf-ship-it/Ops-Mastery-EKS.git 
     targetRevision: main
-    path: release  # <--- غيرنا المسار من kubernetes-manifests إلى release
+    # 2. بما إن ملفاتك موجودة في الـ Root، بنخلي المسار نقطة "." أو نمسحه
+    path: . 
   destination:
     server: https://kubernetes.default.svc
     namespace: default
