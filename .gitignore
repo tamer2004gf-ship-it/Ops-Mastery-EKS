@@ -1,4 +1,19 @@
-.terraform/ 
-terraform.tfstate 
-terraform.tfstate.backup 
-.terraform.lock.hcl 
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Secrets and Temp files (مهم جداً!)
+password.txt
+temp.txt
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
