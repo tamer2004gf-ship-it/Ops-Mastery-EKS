@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: online-boutique
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GoogleCloudPlatform/microservices-demo.git
+    targetRevision: main
+    path: release  # <--- غيرنا المسار من kubernetes-manifests إلى release
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

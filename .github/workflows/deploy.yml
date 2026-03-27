@@ -1,0 +1,33 @@
+name: Deploy to EKS
+
+on:
+  push:
+    branches:
+      - main # (تأكد إن اسم البرانش تبعك main أو master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Connect to EKS Cluster
+      # هون لازم تغير <اسم_الكلاستر_تبعك> لاسم الكلاستر الحقيقي في أمازون
+      run: aws eks update-kubeconfig --name tamer-boutique-cluster --region ${{ secrets.AWS_REGION }}
+
+    - name: Verify connection and Deploy
+      run: |
+        echo "Testing connection to EKS..."
+        kubectl get nodes
+        echo "Deploying the latest Ingress configuration..."
+       
+        kubectl apply -f ingress.yaml -n default
