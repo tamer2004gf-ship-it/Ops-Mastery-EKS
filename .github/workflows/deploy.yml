@@ -11,17 +11,19 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # حدثنا النسخة لـ v4 (أحدث وأسرع)
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v3 # حدثنا النسخة لـ v3 (أنظف وبدون تنبيهات)
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # تم تعديل الأسماء لتطابق الصورة بالضبط
+        aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        # بما إنك ضفت سر اسمه AWS_REGION، خلينا نستخدمه بدل الكتابة اليدوية
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Connect to EKS Cluster
-      # هون لازم تغير <اسم_الكلاستر_تبعك> لاسم الكلاستر الحقيقي في أمازون
+      # اسم الكلاستر صح بناءً على الصور السابقة
       run: aws eks update-kubeconfig --name tamer-boutique-cluster --region ${{ secrets.AWS_REGION }}
 
     - name: Verify connection and Deploy
@@ -29,5 +31,5 @@ jobs:
         echo "Testing connection to EKS..."
         kubectl get nodes
         echo "Deploying the latest Ingress configuration..."
-       
+        # تأكد إن ملف ingress.yaml موجود في الـ Root تبع المستودع
         kubectl apply -f ingress.yaml -n default
