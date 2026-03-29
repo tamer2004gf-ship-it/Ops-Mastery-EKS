@@ -1,31 +1,49 @@
-# Online Boutique: End-to-End DevOps Pipeline
+# 🚀 Advanced Infrastructure for Online Boutique (DevOps & GitOps)
 
-This project showcases a complete, production-grade microservices deployment lifecycle, designed to highlight cloud-native architecture, infrastructure automation, and robust observability.
+Welcome to this comprehensive project focused on building a robust, secure, and scalable infrastructure for Microservices applications using the latest DevOps tools and GitOps best practices.
 
-## 🖥️ Final Application Interface
+![Main Project Banner](./IMG/google-botueq.png)
 
-The final output is a fully functional e-commerce application, featuring a smooth user experience and deployed across an automated, highly available AWS EKS cluster.
+---
 
-![Full Website Interface](IMG/google%20botueq.jpg)
+## 🏗️ Phase 1: Infrastructure Foundation
 
-*The interface focuses on clear hierarchy and a reliable backend powered by microservices.*
+In this phase, the core cloud foundation was established to ensure high availability and security using Infrastructure as Code (IaC):
 
-## 🛠️ Tech Stack & Key Features
+* **AWS Environment Setup:** Provisioned a Virtual Private Cloud (VPC), Subnets, and IAM roles. State management was handled using **S3 and DynamoDB** as a backend for **Terraform**.
+* **EKS Cluster Provisioning:** Built and configured a production-ready **Amazon EKS Cluster**, including managed **Node Groups** to handle container workloads with elasticity.
 
-* **Infrastructure as Code (IaC):** AWS environment provisioned securely with Terraform.
-* **GitOps & CI/CD:** Automated deployments using GitHub Actions and ArgoCD.
-* **Container Registries:** Dual-registry setup utilizing Docker Hub and AWS ECR.
-* **Deep Observability:** Comprehensive monitoring and distributed tracing using Grafana and Tempo.
+![Phase 1 Infrastructure Diagram](./IMG/Gemini_Generated_Image_pv1ctdpv1ctdpv1c.png)
 
-## 🧩 Key Application Components
+---
 
-The following images illustrate key components of the development process, infrastructure provisioning, and tool integration:
+## 🔐 Phase 2: Secrets & Core Configuration
 
-* <img src="IMG/lunch.png" width="48%" alt="Terraform Apply" /> <img src="IMG/argocd.png" width="48%" alt="ArgoCD Sync" />
-* <img src="IMG/dockerhub.png" width="48%" alt="Docker Hub" /> <img src="IMG/ecr.png" width="48%" alt="AWS ECR" />
-* <img src="IMG/grafna.png" width="48%" alt="Grafana Metrics" /> <img src="IMG/tracid.png" width="48%" alt="Tempo Traces" />
-* <img src="IMG/secrets.png" width="48%" alt="GitHub Secrets" />
+This phase focuses on deep security for sensitive data and managing traffic flow into the cluster:
 
-### Component Details:
+* **Secrets Management:** Implemented **AWS Secrets Manager** integrated with **External Secrets Operator (ESO)** inside EKS to securely inject secrets into pods without manual intervention.
+* **Traffic Routing:** Configured the **Ingress Controller** to manage and route external traffic (Ingress/Egress) to the appropriate services efficiently.
 
-Each component serves a specific role in the overall application workflow, from secure secret management and infrastructure creation to continuous deployment and granular system monitoring, ensuring easy maintenance and scalability.
+![Phase 2 Secrets & Ingress Diagram](./IMG/secrets.png)
+
+---
+
+## ⚙️ Phase 3: Continuous Delivery (CI/CD & GitOps)
+
+Automating the development lifecycle to ensure rapid and reliable deployments through GitOps methodologies:
+
+* **CI/CD Pipelines:** Leveraged **GitHub Actions** for building and testing **Docker** images (stored in **ECR/DockerHub**), and **ArgoCD** for continuous deployment, ensuring the cluster state matches the Git repository.
+* **Package Management:** Authored custom **Helm Charts** for the Online Boutique microservices to standardize deployments across different environments.
+
+![Phase 3 CI/CD & GitOps Diagram](./IMG/argocd.png)
+
+---
+
+## 📊 Phase 4: Full-Stack Observability
+
+Establishing deep visibility into system performance and facilitating real-time troubleshooting:
+
+* **LGTM Stack Deployment:** Implemented the full **LGTM Stack** (Loki for logs, **Grafana** for dashboards, Tempo for tracing, and Mimir for metrics).
+* **Distributed Tracing & Metrics:** Configured **OpenTelemetry (OTel)** to collect and export Metrics, Traces, and Logs from the applications to our monitoring backend for comprehensive insights.
+
+![Phase 4 Observability Diagram](./IMG/grafna.png)
