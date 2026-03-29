@@ -6,7 +6,7 @@ This project showcases a modern, fully responsive portfolio website, designed to
 
 The final output is a polished portfolio, featuring a smooth user experience, dedicated project showcases, and a clean contact section.
 
-![Full Website Interface](images/image_fdd481.png)
+Full Website Interface(images/google botueq.png)
 
 *The interface focuses on clear hierarchy and professional presentation.*
 
