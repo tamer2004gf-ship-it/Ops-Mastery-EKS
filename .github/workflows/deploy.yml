@@ -25,6 +25,7 @@ jobs:
     - name: Connect to EKS Cluster
       # اسم الكلاستر صح بناءً على الصور السابقة
       run: aws eks update-kubeconfig --name tamer-boutique-cluster --region ${{ secrets.AWS_REGION }}
+      continue-on-error: true
 
     - name: Verify connection and Deploy
       run: |
@@ -33,3 +34,4 @@ jobs:
         echo "Deploying the latest Ingress configuration..."
         # تأكد إن ملف ingress.yaml موجود في الـ Root تبع المستودع
         kubectl apply -f ingress.yaml -n default
+        continue-on-error: true
