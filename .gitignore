@@ -17,3 +17,28 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Credentials and secrets
+*password*
+*secret*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Kubernetes credentials
+kubeconfig
+*.kubeconfig
+.kube/
+
+# Terraform local/generated files
+*.tfplan
+crash.log
+crash.*.log
+terraform.tfvars
+*.auto.tfvars
